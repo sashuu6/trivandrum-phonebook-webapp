@@ -100,10 +100,23 @@ if($_POST) {
 <aside class="main-sidebar fixed offcanvas b-r" data-toggle='offcanvas'>
     <section class="sidebar">
         <ul class="sidebar-menu mt-4">
+            <li class="treeview active"><a href="#">
+                    <i class="icon icon-phone purple-text s-18"></i> <span>Phonebook Management</span> <i
+                            class="icon icon-angle-left s-18 pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../../users/add"><i class="icon icon-folder5"></i>Add Phonebook Entry</a>
+                    </li>
+                </ul>
+            </li>
             <li class="treeview"><a href="#">
-                <i class="icon icon-sailing-boat-water s-24"></i> <span>Dashboard</span> <i
-                    class=" icon-angle-left  pull-right"></i>
-            </a>
+                    <i class="icon icon-building2 purple-text s-18"></i> <span>Sections Management</span> <i
+                            class="icon icon-angle-left s-18 pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../../sections/add"><i class="icon icon-folder5"></i>Add a Section</a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="relative pt-5">
