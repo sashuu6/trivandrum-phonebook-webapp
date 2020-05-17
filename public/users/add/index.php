@@ -263,7 +263,7 @@ if($_POST) {
                                         <h5 class="card-title">User Information</h5>
                                         <div class="form-group m-0">
                                             <label for="name" class="col-form-label s-12">Name</label>
-                                            <input name="name" id="name" placeholder="Enter Name" class="form-control r-0 light s-12 name" style="text-transform: capitalize;" type="text" required>
+                                            <input name="name" id="name" placeholder="Enter Name" class="form-control r-0 light s-12 name" type="text" required>
                                         </div>
 
                                         <div class="form-row">
@@ -514,6 +514,13 @@ if($_POST) {
 <script>
     print_city('city', 18);
     $(document).ready(function(){
+        $('#name').keyup(function(event) {
+            var textBox = event.target;
+            var start = textBox.selectionStart;
+            var end = textBox.selectionEnd;
+            textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1).toLowerCase();
+            textBox.setSelectionRange(start, end);
+        });
         $(':input[type="submit"]').prop('disabled', true);
         $('input[type="text"]').keyup(function(){
             if($(this).val().length !=0)
