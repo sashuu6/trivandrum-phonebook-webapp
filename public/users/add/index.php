@@ -1,12 +1,18 @@
+<?php
+require '../../../init.php';
+if($_POST) {
+    phonebook_public_form($_POST);
+}
+?>
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../assets/img/basic/favicon.ico" type="image/x-icon">
-    <title>Paper</title>
+    <title>Add User</title>
     <!-- CSS -->
     <link rel="stylesheet" href="../../assets/css/app.css">
     <style>
@@ -32,6 +38,7 @@
     --- Head Part - Use Jquery anywhere at page.
     --- http://writing.colin-gourlay.com/safely-using-ready-before-including-jquery/
     -->
+    <script src="../../assets/js/cities.js"></script>
     <script>(function(w,d,u){w.readyQ=[];w.bindReadyQ=[];function p(x,y){if(x=="ready"){w.bindReadyQ.push(y);}else{w.readyQ.push(x);}};var a={ready:p,bind:p};w.$=w.jQuery=function(f){if(f===d||f===u){return a}else{p(f)}}})(window,document)</script>
 </head>
 <body class="light">
@@ -97,286 +104,6 @@
                 <i class="icon icon-sailing-boat-water s-24"></i> <span>Dashboard</span> <i
                     class=" icon-angle-left  pull-right"></i>
             </a>
-                <ul class="treeview-menu">
-                    <li><a href="../../index.html"><i class="icon icon-folder5"></i>Panel Dashboard 1</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard1-rtl.html"><i class="icon icon-folder5"></i>Panel Dashboard 1 - RTL</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard2.html"><i class="icon icon-folder5"></i>Panel Dashboard 2</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard3.html"><i class="icon icon-folder5"></i>Panel Dashboard 3</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard4.html"><i class="icon icon-folder5"></i>Panel Dashboard 4</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard5.html"><i class="icon icon-folder5"></i>Panel Dashboard 5</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard6.html"><i class="icon icon-folder5"></i>Panel Dashboard 6</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard7.html"><i class="icon icon-folder5"></i>Panel Dashboard 7</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard8.html"><i class="icon icon-folder5"></i>Panel Dashboard 8</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard9.html"><i class="icon icon-folder5"></i>Panel Dashboard 9</a>
-                    </li>
-                    <li><a href="../../panel-page-dashboard10.html"><i class="icon icon-folder5"></i>Panel Dashboard 10</a></li>
-                    <li><a href="../../panel-page-dashboard11.html"><i class="icon icon-folder5"></i>Panel Dashboard 11</a></li>
-                </ul>
-            </li>
-            <li class="treeview"><a href="#">
-                <i class="icon icon icon-package s-24"></i>
-                <span>Products</span>
-                <span class="badge r-3 badge-primary pull-right">4</span>
-            </a>
-                <ul class="treeview-menu">
-                    <li><a href="../../panel-page-products.html"><i class="icon icon-circle-o"></i>All Products</a>
-                    </li>
-                    <li><a href="../../panel-page-products-create.html"><i class="icon icon-add"></i>Add
-                        New </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview"><a href="#"><i class="icon icon-account_box s-24"></i>Users<i
-                    class=" icon-angle-left  pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="../../panel-page-users.html"><i class="icon icon-circle-o"></i>All Users</a>
-                    </li>
-                    <li><a href="../../panel-page-users-create.html"><i class="icon icon-add"></i>Add User</a>
-                    </li>
-                    <li><a href="../../panel-page-profile.html"><i class="icon icon-user"></i>User Profile </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview"><a href="#">
-                <i class="icon icon-package s-24"></i>
-                <i class=" icon-angle-left  pull-right"></i>
-                <span>Inbox</span>
-            </a>
-                <ul class="treeview-menu">
-                    <li><a href="../../panel-page-inbox.html"><i class="icon icon-circle-o"></i>All Messages</a>
-                    </li>
-                    <li><a href="../../panel7-inbox.html"><i class="icon icon-circle-o"></i>Panel7 - Inbox</a>
-                    </li>
-                    <li><a href="../../panel8-inbox.html"><i class="icon icon-circle-o"></i>Panel8 - Inbox</a>
-                    </li>
-                    <li><a href="../../panel-page-inbox-create.html"><i class="icon icon-add"></i>Compose</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview ">
-                <a href="#">
-                    <i class="icon icon-package  s-24"></i> <span>Apps</span>
-                    <i class=" icon-angle-left  pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="../../panel-page-chat.html"><i class="icon icon-circle-o"></i>Chat</a>
-                    </li>
-                    <li><a href="../../panel7-tasks.html"><i class="icon icon-circle-o"></i>Tasks / Todo</a>
-                    </li>
-                    <li><a href="../../panel-page-calendar.html"><i class="icon icon-date_range"></i>Calender</a>
-                    </li>
-                    <li><a href="../../panel-page-calendar2.html"><i class="icon icon-date_range"></i>Calender 2</a>
-                    </li>
-                    <li><a href="../../panel-page-contacts.html"><i class="icon icon-circle-o"></i>Contacts</a>
-                    </li>
-                    <li><a href="../../panel1-projects.html"><i class="icon icon-circle-o"></i>Panel1 - Projects</a>
-                    </li>
-                    <li><a href="../../panel7-projects-list.html"><i class="icon icon-circle-o"></i>Panel7 - Projects List</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="icon icon-documents3 s-24"></i> <span>Pages</span>
-                    <i class=" icon-angle-left  pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="#"><i class="icon icon-documents3"></i>Blank Pages<i
-                            class=" icon-angle-left  pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="../../panel-page-blank.html"><i class="icon icon-document"></i>Simple Blank</a>
-                            </li>
-                            <li><a href="../../panel-page-blank-tabs.html"><i class="icon icon-document"></i>Tabs Blank <i
-                                    class=" icon-angle-left  pull-right"></i></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="icon icon-fingerprint text-green"></i>Auth Pages<i
-                            class=" icon-angle-left  pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="../../login.html"><i class="icon icon-document"></i>Login Page 1</a>
-                            </li>
-                            <li><a href="../../login-2.html"><i class="icon icon-document"></i>Login Page 2</a>
-                            </li>
-                            <li><a href="../../login-3.html"><i class="icon icon-document"></i>Login Page 3</a>
-                            </li>
-                            <li><a href="../../login-4.html"><i class="icon icon-document"></i>Login Page 4</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="icon icon-bug text-red"></i>Error Pages<i
-                            class=" icon-angle-left  pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="../../panel-page-404.html"><i class="icon icon-document"></i>404 Page</a>
-                            </li>
-                            <li><a href="../../panel-page-500.html"><i class="icon icon-document"></i>500 Page<i
-                                    class=" icon-angle-left  pull-right"></i></a>
-                            </li>
-                            <li><a href="../../panel-page-error.html"><i class="icon icon-document"></i>420 Page<i
-                                    class=" icon-angle-left  pull-right"></i></a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#"><i class="icon icon-documents3"></i>Other Pages<i
-                            class=" icon-angle-left  pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="../../panel-page-invoice.html"><i class="icon icon-document"></i>Invoice Page</a>
-                            </li>
-                            <li><a href="../../panel-page-no-posts.html"><i class="icon icon-document"></i>No Post Page</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="icon icon-goals-1  s-24"></i> <span>Elements</span>
-                    <i class=" icon-angle-left  pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="../../panel-element-widgets.html">
-                        <i class="icon icon-widgets amber-text s-14"></i> <span>Widgets</span>
-                    </a>
-                    </li>
-                    <li><a href="../../panel-element-counters.html">
-                        <i class="icon icon-filter_9_plus amber-text s-14"></i> <span>Counters</span>
-                    </a>
-                    <li><a href="../../panel-element-buttons.html">
-                        <i class="icon icon-touch_app amber-text s-14"></i> <span>Buttons</span>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-typography.html">
-                            <i class="icon icon-text-width amber-text s-14"></i> <span>Typography</span>
-                        </a>
-                    </li>
-                    <li><a href="../../panel-element-tabels.html">
-                        <i class="icon icon-table amber-text s-14"></i> <span>Tables</span>
-                    </a>
-                    </li>
-                    <li><a href="../../panel-element-alerts.html">
-                        <i class="icon icon-exclamation-circle amber-text s-14"></i> <span>Alerts</span>
-                    </a>
-                    </li>
-                    <li><a href="../../panel-element-slider.html"><i class="icon icon-view_carousel amber-text s-14"></i>
-                        <span>Slider</span></a></li>
-                    <li><a href="../../panel-element-tabs.html"><i class="icon icon-folders2 amber-text s-14"></i>
-                        <span>Tabs</span></a></li>
-                    <li><a href="../../panel-element-progress-bars.html"><i class="icon icon-folders2 amber-text s-14"></i>
-                        <span>Progress Bars</span></a></li>
-                    <li><a href="../../panel-element-badges.html"><i class="icon icon-flag7 amber-text s-14"></i>
-                        <span>Badges</span></a></li>
-                    <li><a href="../../panel-element-preloaders.html"><i class="icon icon-data_usage amber-text s-14"></i>
-                        <span>Preloaders</span></a></li>
-                </ul>
-            </li>
-            <li class="treeview ">
-                <a href="#">
-                    <i class="icon icon-wpforms  s-24 "></i> <span>Forms & Plugins</span>
-                    <i class=" icon-angle-left  pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="../../panel-element-forms.html"><i class="icon icon-wpforms light-green-text"></i>Bootstrap
-                        Inputs</a>
-                    </li>
-                    <li><a href="../../form-jquery-validations.html"><i class="icon icon-note-important light-green-text"></i>
-                        Form Validation (Jquery)</a>
-                    </li>
-                    <li><a href="../../form-bootstrap-validations.html"><i class="icon icon-note-important light-green-text"></i>
-                        Form Validation (Bootstrap)</a>
-                    </li>
-                    <li><a href="../../panel-element-editor.html"><i class="icon icon-pen2 light-green-text"></i>Editor</a>
-                    </li>
-                    <li><a href="../../panel-element-toast.html"><i
-                            class="icon icon-notifications_active light-green-text"></i>Toasts</a>
-                    </li>
-                    <li><a href="../../panel-element-stepper.html"><i class="icon icon-burst_mode light-green-text"></i>Stepper</a>
-                    </li>
-                    <li><a href="../../panel-element-date-time-picker.html"><i
-                            class="icon icon-date_range light-green-text"></i>Date Time Picker</a>
-                    </li>
-                    <li><a href="../../panel-element-color-picker.html"><i class="icon icon-adjust light-green-text"></i>Color
-                        Picker</a>
-                    </li>
-                    <li><a href="../../panel-element-range-slider.html"><i class="icon icon-space_bar light-green-text"></i>Range
-                        Slider</a>
-                    </li>
-                    <li><a href="../../panel-element-select2.html"><i
-                            class="icon  icon-one-finger-click light-green-text"></i>Select 2</a>
-                    </li>
-                    <li><a href="../../panel-element-tags.html"><i class="icon  icon-tags3 light-green-text"></i>Tags</a>
-                    </li>
-                    <li><a href="../../panel-element-data-tables.html"><i class="icon icon-table light-green-text"></i>Data
-                        Tables</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview"><a href="#">
-                <i class="icon icon-bar-chart2  s-24"></i>
-                <span>Charts</span>
-                <i class=" icon-angle-left  pull-right"></i>
-            </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="../../panel-element-charts-js.html"><i class="icon icon-area-chart pink-text s-14"></i><span>Charts.Js</span></a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-morris.html"><i class="icon icon-bubble_chart pink-text s-14"></i>Morris
-                            Charts</a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-echarts.html">
-                            <i class="icon icon-bar-chart-o pink-text s-14"></i>Echarts</a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-easy-pie-charts.html">
-                            <i class="icon icon-area-chart pink-text s-14"></i>Easy Pie Charts</a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-jqvmap.html">
-                            <i class="icon icon-map pink-text s-14"></i>Jqvmap</a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-sparklines.html">
-                            <i class="icon icon-line-chart2 pink-text s-14"></i>Sparklines</a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-float.html">
-                            <i class="icon icon-pie-chart pink-text s-14"></i>Float Charts</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview"><a href="#">
-                <i class="icon icon-dialpad  s-24"></i>
-                <span>Extra</span>
-                <i class=" icon-angle-left  pull-right"></i>
-            </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="../../panel-element-letters.html">
-                            <i class="icon icon-brightness_auto light-blue-text s-14"></i>
-                            <span>Avatar Placeholders</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../panel-element-icons.html">
-                            <i class="icon icon-camera2 light-blue-text s-14"></i> <span>Icons</span>
-                        </a>
-                    </li>
-                    <li><a href="../../panel-element-colors.html">
-                        <i class="icon icon-palette light-blue-text s-14"></i> <span>Colors</span>
-                    </a>
-                    </li>
-                </ul>
             </li>
         </ul>
         <div class="relative pt-5">
@@ -386,18 +113,13 @@
                         <img width="40" src="../../assets/img/dummy/u7.png" alt="User Image">
                     </div>
                     <div class="info">
-                        <h5 class="mt-2 mb-1">Alexander Pierce</h5>
+                        <h5 class="mt-2 mb-1">Tharun P Karun</h5>
                         <span class="s-12">Team Leader</span>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="collapse multi-collapse" id="userSettingsCollapse">
                     <div class="list-group mt-3 shadow">
-                        <a href="../../index.html" class="list-group-item list-group-item-action ">
-                            <i class="mr-2 icon-umbrella text-blue"></i>Profile
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action"><i
-                                class="mr-2 icon-cogs text-yellow"></i>Settings</a>
                         <a href="#" class="list-group-item list-group-item-action"><i
                                 class="mr-2 icon-security text-purple"></i>Change Password</a>
                     </div>
@@ -435,117 +157,11 @@
         <!--Top Menu Start -->
         <div class="navbar-custom-menu d-flex align-items-center">
             <ul class="nav navbar-nav">
-                <!-- Messages-->
-                <li class="dropdown custom-dropdown messages-menu">
-                    <a href="#" class="nav-link pl-lg-3 pr-lg-3 b-l" data-toggle="dropdown">
-                        <i class="icon-message "></i>
-                        <span class="badge badge-success badge-mini rounded-circle">4</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu pl-2 pr-2">
-                                <!-- start message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="avatar float-left">
-                                            <img src="../../assets/img/dummy/u4.png" alt="">
-                                            <span class="avatar-badge busy"></span>
-                                        </div>
-                                        <h4>
-                                            Support Team
-                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <!-- end message -->
-                                <!-- start message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="avatar float-left">
-                                            <img src="../../assets/img/dummy/u1.png" alt="">
-                                            <span class="avatar-badge online"></span>
-                                        </div>
-                                        <h4>
-                                            Support Team
-                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <!-- end message -->
-                                <!-- start message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="avatar float-left">
-                                            <img src="../../assets/img/dummy/u2.png" alt="">
-                                            <span class="avatar-badge idle"></span>
-                                        </div>
-                                        <h4>
-                                            Support Team
-                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <!-- end message -->
-                                <!-- start message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="avatar float-left">
-                                            <img src="../../assets/img/dummy/u3.png" alt="">
-                                            <span class="avatar-badge busy"></span>
-                                        </div>
-                                        <h4>
-                                            Support Team
-                                            <small><i class="icon icon-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <!-- end message -->
-                            </ul>
-                        </li>
-                        <li class="footer s-12 p-2 text-center"><a href="#">See All Messages</a></li>
-                    </ul>
-                </li>
-                <!-- Notifications -->
-                <li class="dropdown custom-dropdown notifications-menu">
-                    <a href="#" class="nav-link  b-r b-l pl-lg-3 pr-lg-3" data-toggle="dropdown" aria-expanded="false">
-                        <i class="icon-notifications "></i>
-                        <span class="badge badge-danger badge-mini rounded-circle">4</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="header">You have 10 notifications</li>
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="#">
-                                        <i class="icon icon-data_usage text-success"></i> 5 new members joined today
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon icon-data_usage text-danger"></i> 5 new members joined today
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="icon icon-data_usage text-yellow"></i> 5 new members joined today
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="footer p-2 text-center"><a href="#">View all</a></li>
-                    </ul>
-                </li>
 
             </ul>
             <!-- Button -->
             <div>
-                <a href="#" class="btn btn-primary btn-sm ml-3 d-none d-sm-block">Add New Project</a>
+                <a href="#" class="btn btn-primary btn-sm ml-3 d-none d-sm-block">List Phonebook</a>
             </div>
         </div>
 
@@ -554,7 +170,7 @@
 <div class="page has-sidebar-left height-full">
     <div class="container-fluid relative animatedParent animateOnce">
         <div class="row mb-5">
-            <div class="col-md-8 offset-lg-5">
+            <div class="col-md-12 offset-sm-2 offset-lg-5">
                 <div class="pt-5 relative">
                     <h3>
                         Add Phonebook
@@ -622,100 +238,106 @@
         </div>
         <div class="animated fadeInUpShort go">
             <div class="row my-3">
-                <div class="col-md-7  offset-md-2">
-                    <form action="#">
+                <div class="col-md-8 offset-md-2">
+                    <form method="POST" id="registerSubmit">
                         <div class="card no-b  no-r">
                             <div class="card-body">
                                 <h5 class="card-title">Section Selection</h5>
                                 <div class="form-row">
                                     <div class="form-group col-5 m-0">
-                                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select A parent</label>
-                                        <select class="custom-select my-1 mr-sm-2 form-control r-0 light s-12" id="inlineFormCustomSelectPref">
-                                            <option selected="">Choose...</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Section of the user that you are adding</label>
+                                        <select class="select2" name="section" required>
+                                            <?php
+                                            foreach (list_sections() as $section) {
+                                                echo '<option value="' . $section['secret'] . '">' . $section['name'] . '</option>';
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                             <hr>
                             <div class="card-body">
-                                <h5 class="card-title">User Information</h5>
                                 <div class="form-row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
+                                        <h5 class="card-title">User Information</h5>
                                         <div class="form-group m-0">
-                                            <label for="name" class="col-form-label s-12">STUDENT NAME</label>
-                                            <input id="name" placeholder="Enter User Name" class="form-control r-0 light s-12 " type="text">
+                                            <label for="name" class="col-form-label s-12">Name</label>
+                                            <input name="name" id="name" placeholder="Enter Name" class="form-control r-0 light s-12 name" style="text-transform: capitalize;" type="text" required>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-6 m-0">
-                                                <label for="cnic" class="col-form-label s-12"><i class="icon-fingerprint"></i>CNIC / FORM B</label>
-                                                <input id="cnic" placeholder="Enter Form B or CNIC Number" class="form-control r-0 light s-12 date-picker" type="text">
+                                                <label for="address1" class="col-form-label s-12">Address 1</label>
+                                                <input name="address1" type="text" class="form-control r-0 light s-12" id="address1" placeholder="Eg. House No. 1, Street Name">
                                             </div>
-                                            <div class="form-group col-6 m-0">
-                                                <label for="dob" class="col-form-label s-12"><i class="icon-calendar mr-2"></i>DATE OF BIRTH</label>
-                                                <input id="dob" placeholder="Select Date of Birth" class="form-control r-0 light s-12 datePicker" data-time-picker="false" data-format-date="Y/m/d" type="text">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group m-0">
-                                            <label for="dob" class="col-form-label s-12">GENDER</label>
-                                            <br>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="male" name="gender" class="custom-control-input">
-                                                <label class="custom-control-label m-0" for="male">Male</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="female" name="gender" class="custom-control-input">
-                                                <label class="custom-control-label m-0" for="female">Female</label>
+                                            <div class="form-group col-6">
+                                                <label for="address2" class="col-form-label s-12">Address 2</label>
+                                                <input name="address2" type="text" class="form-control r-0 light s-12" id="address2" placeholder="Eg. P.O BOX No., Place Name">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 offset-md-1">
+                                    <!--<div class="col-md-3 offset-md-1">
                                         <input hidden="" id="file" name="file">
-                                        <div class="dropzone dropzone-file-area pt-4 pb-4 dz-clickable" id="fileUpload">
+                                        <div class="dropzone dropzone-file-area pt-4 pb-4 dz-clickable" id="myAwesomeDropzone">
                                             <div class="dz-default dz-message">
-                                                <span>Drop A passport size image of user</span>
+                                                <span>Drop an image of user</span>
                                                 <div>You can also click to open file browser</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                 </div>
 
-                                <div class="form-row mt-1">
-                                    <div class="form-group col-4 m-0">
-                                        <label for="email" class="col-form-label s-12"><i class="icon-envelope-o mr-2"></i>Email</label>
-                                        <input id="email" placeholder="user@email.com" class="form-control r-0 light s-12 " type="text">
-                                    </div>
-
-                                    <div class="form-group col-4 m-0">
-                                        <label for="phone" class="col-form-label s-12"><i class="icon-phone mr-2"></i>Phone</label>
-                                        <input id="phone" placeholder="05112345678" class="form-control r-0 light s-12 " type="text">
-                                    </div>
-                                    <div class="form-group col-4 m-0">
-                                        <label for="mobile" class="col-form-label s-12"><i class="icon-mobile-phone mr-2"></i>Mobile</label>
-                                        <input id="mobile" placeholder="eg: 3334709643" class="form-control r-0 light s-12 " type="text">
-                                    </div>
-
-                                </div>
                                 <div class="form-row">
-                                    <div class="form-group col-9 m-0">
-                                        <label for="address" class="col-form-label s-12">Address</label>
-                                        <input type="text" class="form-control r-0 light s-12" id="address" placeholder="Enter Address">
+                                    <div class="form-group col-4 m-0">
+                                        <label for="city" class="col-form-label s-12"><i class="icon-address-book mr-2"></i>State</label>
+                                        <select class="select2" name="state" id="state" onchange="print_city('city', this.selectedIndex);" required>
+
+                                            <script language="javascript">print_state("state");</script>
+                                        </select>
                                     </div>
 
-                                    <div class="form-group col-3 m-0">
-                                        <label for="inputCity" class="col-form-label s-12">City</label>
-                                        <input type="text" class="form-control r-0 light s-12" id="inputCity">
+                                    <div class="form-group col-4 m-0">
+                                        <label for="phone" class="col-form-label s-12"><i class="icon-address-book mr-2"></i>City</label>
+                                        <select class="select2" name="city" id="city" required>
+                                        </select>
                                     </div>
+                                    <div class="form-group col-4 m-0">
+                                        <label for="phone1" class="col-form-label s-12"><i class="icon-phone mr-2"></i>Work</label>
+                                        <input name="phone1" placeholder="1234567890" class="form-control r-0 light s-12 " type="tel" required>
+                                    </div>
+                                    <div class="form-group col-4 m-0">
+                                        <label for="phone2" class="col-form-label s-12"><i class="icon-phone mr-2"></i>Home</label>
+                                        <input name="phone2" placeholder="1234567890" class="form-control r-0 light s-12 " type="tel">
+                                    </div>
+
                                 </div>
                             </div>
                             <hr>
                             <div class="card-body">
-                                <button type="submit" class="btn btn-primary btn-lg"><i class="icon-save mr-2"></i>Save Data</button>
+                                <h5 class="card-title">Permission Selection</h5>
+                                <div class="form-row">
+                                    <?php
+                                    foreach(list_roles() as $key => $role) {
+                                        echo '<div class="custom-control custom-checkbox mt-1 mb-3 pr-4">
+                                        <input type="checkbox" id="customControlValidation' . $key . '" name="roles[]" value="' . $role['secret'] . '">
+                                        <label for="customControlValidation' . $key . '">' . $role['name'] . '</label>
+                                    </div>';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="form-row">
+                                    <div class="custom-control custom-checkbox mb-3 pr-4">
+                                        <input type="checkbox" id="show_dashboard" name="show_dashboard" value="show_dashboard">
+                                        <label for="show_dashboard">Show in Dashboard</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="card-body">
+                                <button id="submit" type="submit" class="btn btn-primary btn-lg"><i class="icon-save mr-2"></i>Save Data</button>
                             </div>
                         </div>
                     </form>
@@ -886,8 +508,84 @@
 <div class="control-sidebar-bg shadow white fixed"></div>
 </div>
 <!--/#app -->
+<script src="../../vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="../../assets/js/app.js"></script>
+<script src="../../assets/js/crypt.js"></script>
+<script>
+    print_city('city', 18);
+    $(document).ready(function(){
+        $(':input[type="submit"]').prop('disabled', true);
+        $('input[type="text"]').keyup(function(){
+            if($(this).val().length !=0)
+                $(':input[type="submit"]').prop('disabled', false);
+            else
+                $(':input[type="submit"]').prop('disabled', true);
+        })
+    });
 
+    $(':input[type="submit"]').on('click',function(e) {
+        e.preventDefault();
+        //var encrypted = CryptoJS.AES.encrypt(JSON.stringify("value to encrypt"), "my passphrase", {format: CryptoJSAesJson}).toString();
+        //var decrypted = JSON.parse(CryptoJS.AES.decrypt(encrypted, "my passphrase", {format: CryptoJSAesJson}).toString(CryptoJS.enc.Utf8));
+        // convert form data to array
+        Swal.fire(
+            {
+                title: 'Encrypting',
+                text: 'Please wait while we are encrypting all data before sending it to our server.',
+                hideOnOverlayClick: false,
+                hideOnContentClick: false,
+                closeClick: false,
+                showCancelButton: false, // There won't be any cancel button
+                showConfirmButton: false // There won't be any confirm button
+            }
+        );
+        var values, index;
+        values = $('form').serializeArray();
+        for (index = 0; index < values.length; ++index) {
+            values[index].name = CryptoJS.AES.encrypt(JSON.stringify(values[index].name), getCookie('web'), {format: CryptoJSAesJson}).toString();
+            if(values[index].value !== '')
+                values[index].value = CryptoJS.AES.encrypt(JSON.stringify(values[index].value), getCookie('web'), {format: CryptoJSAesJson}).toString();
+        }
+        setTimeout(function () {
+            Swal.fire(
+                {
+                    title: 'Sending',
+                    text: 'Data encrypted successfully, Sending it to server!',
+                    allowOutsideClick: false,
+                    showCancelButton: false, // There won't be any cancel button
+                    showConfirmButton: false // There won't be any confirm button
+                }
+            );
+        }, 350);
+        values = jQuery.param(values);
+        setTimeout(function () {
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "",
+                    data: values,
+                    beforeSend: function() {
+                        $(':input[type="submit"]').prop('disabled', true);
+                    },
+                    success: function (data) {
+                        if (data.status == true)
+                            Swal.fire("Success!", data.message, "success");
+                        else
+                            Swal.fire("Oops", data.message, "error");
+                        $("form").trigger("reset");
+                    },
+                    error: function (data) {
+                        Swal.fire("Oops", "We couldn't connect to the server!", "error");
+                        $(':input[type="submit"]').prop('disabled', false);
+                    }
+                }
+            );
+        }, 800);
+    });
+    $('.select2').select2({
+        placeholder: 'Select an option'
+    });
+</script>
 
 
 
