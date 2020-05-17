@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: mariadb:3306
--- Generation Time: May 13, 2020 at 02:52 PM
--- Server version: 10.5.1-MariaDB-1:10.5.1+maria~bionic
--- PHP Version: 7.4.5
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 17, 2020 at 07:33 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `trivandrum_phonebook`
+-- Database: `trivandrum-phonebook`
 --
 
 -- --------------------------------------------------------
@@ -37,17 +38,10 @@ CREATE TABLE `phonebook` (
   `city` varchar(1024) DEFAULT NULL,
   `state` varchar(1024) DEFAULT NULL,
   `country` varchar(1024) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `phonebook`
---
-
-INSERT INTO `phonebook` (`id`, `secret`, `section_id`, `name`, `address_1`, `address_2`, `city`, `state`, `country`, `created_timestamp`, `modified_timestamp`) VALUES
-(50, '6a026b74951e11eab9d00242ac150002', 1777, 'Collector Demo', 'Demo Street', 'Demo Street 2', 'Trivandrum', 'Kerala', 'India', '2020-05-13 13:41:32', NULL),
-(51, '', 1777, 'collector helpline', 'Collector Camp', 'Kowdiyar', 'Thiruvananthapuram', 'Kerala', 'India', '2020-05-13 14:47:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -60,18 +54,10 @@ CREATE TABLE `phonebook_numbers` (
   `phonebook_id` bigint(20) NOT NULL,
   `international_code` int(11) NOT NULL DEFAULT 91,
   `number` varchar(1024) NOT NULL,
-  `description` varchar(1024) NOT NULL,
+  `description` varchar(1024) DEFAULT NULL,
   `created_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `phonebook_numbers`
---
-
-INSERT INTO `phonebook_numbers` (`id`, `phonebook_id`, `international_code`, `number`, `description`, `created_timestamp`, `modified_timestamp`) VALUES
-(1, 50, 91, '1234567890', 'Demo Work', '2020-05-13 14:18:40', NULL),
-(2, 51, 91, '8281962557', 'landline', '2020-05-13 14:51:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -87,14 +73,6 @@ CREATE TABLE `phonebook_roles` (
   `modified_timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `phonebook_roles`
---
-
-INSERT INTO `phonebook_roles` (`id`, `phonebook_id`, `role_id`, `created_timestamp`, `modified_timestamp`) VALUES
-(150, 50, 922337203, '2020-05-13 13:45:10', NULL),
-(151, 50, 922337204, '2020-05-13 13:56:52', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -103,7 +81,9 @@ INSERT INTO `phonebook_roles` (`id`, `phonebook_id`, `role_id`, `created_timesta
 
 CREATE TABLE `phonebook_sections` (
   `id` bigint(20) NOT NULL,
+  `secret` varchar(512) DEFAULT NULL,
   `name` varchar(1024) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -112,8 +92,18 @@ CREATE TABLE `phonebook_sections` (
 -- Dumping data for table `phonebook_sections`
 --
 
-INSERT INTO `phonebook_sections` (`id`, `name`, `created_timestamp`, `modified_timestamp`) VALUES
-(1777, 'Collector Office', '2020-05-13 14:11:24', NULL);
+INSERT INTO `phonebook_sections` (`id`, `secret`, `name`, `status`, `created_timestamp`, `modified_timestamp`) VALUES
+(1777, '98608785-9798-11ea-ae29-a08cfd260cff', 'Collector Office', 1, '2020-05-13 14:11:24', NULL);
+
+--
+-- Triggers `phonebook_sections`
+--
+DELIMITER $$
+CREATE TRIGGER `phonebook_sections_secret` BEFORE INSERT ON `phonebook_sections` FOR EACH ROW BEGIN
+  SET new.secret := (SELECT UUID());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -129,13 +119,6 @@ CREATE TABLE `phonebook_show` (
   `modified_timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `phonebook_show`
---
-
-INSERT INTO `phonebook_show` (`id`, `phonebook_id`, `show_dashboard`, `created_timestamp`, `modified_timestamp`) VALUES
-(1, 51, 1, '2020-05-13 14:48:44', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -144,7 +127,9 @@ INSERT INTO `phonebook_show` (`id`, `phonebook_id`, `show_dashboard`, `created_t
 
 CREATE TABLE `roles` (
   `id` bigint(20) NOT NULL,
+  `secret` varchar(512) DEFAULT NULL,
   `name` varchar(1024) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `modified_timestamp` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -153,9 +138,19 @@ CREATE TABLE `roles` (
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `created_timestamp`, `modified_timestamp`) VALUES
-(922337203, 'Administrator', '2020-05-13 13:34:37', NULL),
-(922337204, 'Main Staff', '2020-05-13 13:50:20', NULL);
+INSERT INTO `roles` (`id`, `secret`, `name`, `status`, `created_timestamp`, `modified_timestamp`) VALUES
+(-1, '55cdada2-97bc-11ea-ae29-a08cfd260cff', 'Administrator', 1, '2020-05-13 13:34:37', NULL),
+(922337204, '55cdbd7c-97bc-11ea-ae29-a08cfd260cff', 'Main Staff', 1, '2020-05-13 13:50:20', NULL);
+
+--
+-- Triggers `roles`
+--
+DELIMITER $$
+CREATE TRIGGER `roles_secret` BEFORE INSERT ON `roles` FOR EACH ROW BEGIN
+  SET new.secret := (SELECT UUID());
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -179,13 +174,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `secret`, `email`, `password`, `name`, `role`, `created_timestamp`, `modified_timestamp`) VALUES
-(101, '5404ccbd-951e-11ea-b9d0-0242ac150002', 'tpk@tharun.me', '2345678fghj34567', 'Tharun P Karun', 922337203, '2020-05-13 13:40:55', NULL);
+(101, '5404ccbd-951e-11ea-b9d0-0242ac150002', 'tpk@tharun.me', '2345678fghj34567', 'Tharun P Karun', -1, '2020-05-13 13:40:55', NULL);
 
 --
 -- Triggers `users`
 --
 DELIMITER $$
-CREATE TRIGGER `beforeYourTableUpdate` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
+CREATE TRIGGER `beforeUsersInsert` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
   SET new.secret := (SELECT UUID());
 END
 $$
@@ -251,13 +246,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `phonebook`
 --
 ALTER TABLE `phonebook`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `phonebook_numbers`
 --
 ALTER TABLE `phonebook_numbers`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `phonebook_roles`
@@ -269,13 +264,13 @@ ALTER TABLE `phonebook_roles`
 -- AUTO_INCREMENT for table `phonebook_sections`
 --
 ALTER TABLE `phonebook_sections`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1778;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1779;
 
 --
 -- AUTO_INCREMENT for table `phonebook_show`
 --
 ALTER TABLE `phonebook_show`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `roles`
