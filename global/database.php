@@ -7,7 +7,7 @@ use Medoo\Medoo;
 $database = new Medoo([
     'database_type' => 'mysql',
     'database_name' => 'trivandrum-phonebook',
-    'server' => 'localhost',
+    'server' => 'mariadb',
     'username' => 'docker',
     'password' => 'docker'
 ]);
