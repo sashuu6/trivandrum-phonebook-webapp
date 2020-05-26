@@ -37,11 +37,13 @@ function encrypt($passphrase, $value){
     return json_encode($data);
 }
 
-function encrypt_public($passphrase, $data, $method = "POST") {
+function encrypt_public($data, $method = "POST", $passphrase = WEB_KEY) {
+    if(!is_array($data))
+        return base64_encode(encrypt($passphrase, $data));
     if($method == "POST") {
         foreach($data as $key => $value) {
             if(!empty($value))
-                $data[$key] = encrypt($passphrase, $value);
+                $data[$key] =  base64_encode(encrypt($passphrase, $value));
         }
         return $data;
     }

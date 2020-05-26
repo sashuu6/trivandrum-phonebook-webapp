@@ -65,3 +65,9 @@ function print_city(city_id, city_index){
             option_str.options[option_str.length] = new Option(city_arr[i],city_arr[i]);
     }
 }
+
+if($('#state').length > 0) {
+    print_state("state");
+    if($('#city').length > 0)
+        print_city('city', 18);
+}

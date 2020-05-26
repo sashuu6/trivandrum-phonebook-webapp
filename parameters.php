@@ -1,5 +1,7 @@
 <?php
 
+define("APP_NAME", "Trivandrum Phonebook");
+define("PUBLIC_URL", "http://localhost/trivandrum-phonebook-webapp/public/");
 define("TABLE_PREFIX", "");
 define("TABLE_PHONEBOOK_SECTIONS", "phonebook_sections");
 define("TABLE_ROLES", "roles");
