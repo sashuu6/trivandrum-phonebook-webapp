@@ -1,13 +1,13 @@
 <?php
-define("PAGE_TITLE", "Section List");
+define("PAGE_TITLE", "Edit Section");
 require 'global.php';
 if($_POST) {
-    section_delete_form_submit($_POST);
+    section_edit_form_submit($_POST);
     die();
 }
 site_header();
 ?>
-                <!-- content @s -->
+    <!-- content @s -->
     <div class="nk-content ">
         <div class="container-fluid">
             <div class="nk-content-inner">
@@ -15,33 +15,22 @@ site_header();
                     <div class="components-preview wide-md mx-auto">
                         <div class="nk-block-head nk-block-head-lg wide-sm">
                             <div class="nk-block-head-content">
-
-                                <h2 class="nk-block-title fw-normal">Sections List</h2>
+                                <h2 class="nk-block-title fw-normal">Edit Section</h2>
                                 <div class="nk-block-des">
-                                    <p class="lead">Here you can see the list of all sections.</p>
+                                    <p class="lead">Here you can edit the selected section.</p>
                                 </div>
                             </div>
-                        </div>
-
-
-
-
+                        </div><!-- .nk-block-head -->
                         <div class="nk-block nk-block-lg">
-
                             <div class="card card-bordered card-preview">
-                                <div class="card-inner">
-                                    <div class="row g-gs">
-                                        <?php section_public_list(); ?>
-                                    </div>
-                                </div>
-                            </div><!-- .card-preview -->
-
-                        </div>
-                    </div>
+                                <?php section_edit_form($_GET); ?>
+                            </div>
+                        </div> <!-- nk-block -->
+                    </div><!-- .components-preview -->
                 </div>
             </div>
         </div>
     </div>
-                <!-- content @e -->
+    <!-- content @e -->
 <?php
 site_footer();

@@ -133,10 +133,14 @@ $(':input[type="submit"]').on('click',function(e) {
                 },
                 success: function (data) {
                     if (data.status == true)
-                        Swal.fire("Success!", data.message, "success");
-                    else
+                        Swal.fire({title: "Success", text: data.message, type: "success"}).then(function() {
+                                location.reload();
+                            }
+                        );
+                    else {
                         Swal.fire("Oops", data.message, "error");
-                    $("form").trigger("reset");
+                        $("form").trigger("reset");
+                    }
                 },
                 error: function (data) {
                     Swal.fire("Oops", "We couldn't connect to the server!", "error");
@@ -151,11 +155,14 @@ $(':input[type="submit"]').on('click',function(e) {
 if($('#name').length > 0) {
     $(document).ready(function(){
         $('#name').keyup(function(event) {
-            var textBox = event.target;
-            var start = textBox.selectionStart;
-            var end = textBox.selectionEnd;
-            textBox.value = textBox.value.charAt(0).toUpperCase() + textBox.value.slice(1).toLowerCase();
-            textBox.setSelectionRange(start, end);
+            var str = $('#name').val();
+            var spart = str.split(" ");
+            for ( var i = 0; i < spart.length; i++ )
+            {
+                var j = spart[i].charAt(0).toUpperCase();
+                spart[i] = j + spart[i].substr(1);
+            }
+            $('#name').val(spart.join(" "));
         });
         $(':input[type="submit"]').prop('disabled', true);
         $('input[type="text"]').keyup(function(){
@@ -165,4 +172,30 @@ if($('#name').length > 0) {
                 $(':input[type="submit"]').prop('disabled', true);
         })
     });
+}
+
+function delete_item (value) {
+    value = CryptoJS.AES.encrypt(JSON.stringify(value), getCookie('web'), {format: CryptoJSAesJson}).toString();
+    $.ajax(
+        {
+            type: "POST",
+            url: "",
+            data: {"delete" : value},
+            success: function (data) {
+                if (data.status == true)
+                    Swal.fire({title: "Success", text: data.message, type: "success"}).then(function() {
+                            location.reload();
+                        }
+                    );
+                else {
+                    Swal.fire("Oops", data.message, "error");
+                    $("form").trigger("reset");
+                }
+            },
+            error: function (data) {
+                Swal.fire("Oops", "We couldn't connect to the server!", "error");
+                $(':input[type="submit"]').prop('disabled', false);
+            }
+        }
+    );
 }
