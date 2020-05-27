@@ -20,9 +20,9 @@ function section_public_form ($get_data) {
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="col-md-12">
-                                        <h5 class="card-title">Section Information</h5>
+                                        <h5 class="card-title encrypted">' . encrypt_public('Section Information') . '</h5>
                                         <div class="form-group m-0">
-                                            <label for="name" class="col-form-label s-12">Name</label>
+                                            <label for="name" class="col-form-label s-12 encrypted d-none">' . encrypt_public('Name') . '</label>
                                             <input name="name" id="name" placeholder="Enter Name" class="form-control r-0 light s-12 name" type="text" required>
                                         </div>
                                     </div>
@@ -30,7 +30,7 @@ function section_public_form ($get_data) {
                             </div>
                             <hr>
                             <div class="card-body">
-                                <button id="submit" type="submit" class="btn btn-primary btn-lg">Save Data</button>
+                                <button id="submit" type="submit" class="btn btn-primary btn-lg encrypted d-none">' . encrypt_public('Add Section') . '</button>
                             </div>
                         </div>
                   </form>
@@ -45,7 +45,7 @@ function section_public_list() {
                 <div class="card text-white bg-secondary">
                     <div class="card-header">Section</div>
                     <div class="card-inner">
-                        <h5 class="card-title">' . $section['name'] . '</h5>
+                        <h5 class="card-title encrypted">' . encrypt_public($section['name']) . '</h5>
                         <p class="card-text"><a href="' . PUBLIC_URL . 'phonebooks_list.php?section=' . $section['secret'] . '" class="btn btn-primary">Show Phonebook</a></p>
                     </div>
                 </div>

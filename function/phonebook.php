@@ -42,9 +42,9 @@ function phonebook_public_list_view($get_data) {
     if(!empty($section))
     echo '  <div class="nk-block-head">
                 <div class="nk-block-head-content">
-                    <h4 class="nk-block-title">' . $section[0]['name'] . '</h4>
-                    <div class="nk-block-des">
-                        <p>Here you can see the phone contacts in the section.</p>
+                    <h4 class="nk-block-title encrypted d-none">' . encrypt_public( $section[0]['name']) . '</h4>
+                    <div class="nk-block-des encrypted d-none">
+                        <p>' . encrypt_public('Here you can see the phone contacts in the section.') . '</p>
                     </div>
                 </div>
             </div>';
@@ -74,7 +74,7 @@ function phonebook_public_list_view($get_data) {
                                                         <td class="nk-tb-col">
                                                             <div class="user-card">
                                                                 <div class="user-avatar bg-dark d-none d-sm-flex">
-                                                                    <span>' . get_profile_letters(decrypt($row['secret'], $row['name'])) . '</span>
+                                                                    <span class="encrypted d-none">' . encrypt_public(get_profile_letters(decrypt($row['secret'], $row['name']))) . '</span>
                                                                 </div>
                                                                 <div class="user-info">
                                                                     <span class="tb-lead encrypted d-none">' . encrypt_public(decrypt($row['secret'], $row['name'])) . '<span class="dot dot-success d-md-none ml-1"></span></span>
@@ -129,10 +129,10 @@ function phonebook_public_form($get_data) {
                                                 <form method="POST" id="registerSubmit">
                         <div class="card no-b  no-r">
                             <div class="card-body">
-                                <h5 class="card-title">Section Selection</h5>
+                                <h5 class="card-title encrypted">' . encrypt_public('Section Selection') . '</h5>
                                 <div class="form-row">
                                     <div class="form-group col-5 m-0">
-                                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Section of the user that you are adding</label>
+                                        <label class="my-1 mr-2 encrypted d-none" for="inlineFormCustomSelectPref">' . encrypt_public('Section of the user that you are adding') . '</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" name="section" data-search="on" required>';
                                             foreach (list_sections() as $section) {
@@ -147,19 +147,19 @@ function phonebook_public_form($get_data) {
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="col-md-12">
-                                        <h5 class="card-title">User Information</h5>
+                                        <h5 class="card-title encrypted">' . encrypt_public('User Information') . '</h5>
                                         <div class="form-group m-0">
-                                            <label for="name" class="col-form-label s-12">Name</label>
+                                            <label for="name" class="col-form-label s-12 encrypted d-none">' . encrypt_public('Name') . '</label>
                                             <input name="name" id="name" placeholder="Enter Name" class="form-control r-0 light s-12 name" type="text" required>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-6 m-0">
-                                                <label for="address1" class="col-form-label s-12">Address 1</label>
+                                                <label for="address1" class="col-form-label s-12 encrypted d-none">' . encrypt_public('Address 1') . '</label>
                                                 <input name="address1" type="text" class="form-control r-0 light s-12" id="address1" placeholder="Eg. House No. 1, Street Name">
                                             </div>
                                             <div class="form-group col-6">
-                                                <label for="address2" class="col-form-label s-12">Address 2</label>
+                                                <label for="address2" class="col-form-label s-12 encrypted d-none">' . encrypt_public('Address 2') . '</label>
                                                 <input name="address2" type="text" class="form-control r-0 light s-12" id="address2" placeholder="Eg. P.O BOX No., Place Name">
                                             </div>
                                         </div>
@@ -168,24 +168,24 @@ function phonebook_public_form($get_data) {
 
                                 <div class="form-row">
                                     <div class="form-group col-4 m-0">
-                                        <label for="city" class="col-form-label s-12"><i class="icon-address-book mr-2"></i>State</label>
+                                        <label for="state" class="col-form-label s-12 encrypted d-none">' . encrypt_public('State') . '</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" name="state" id="state" onchange="print_city(\'city\', this.selectedIndex);" data-search="on" required></select>
                                         </div>
                                     </div>
 
                                     <div class="form-group col-4 m-0">
-                                        <label for="phone" class="col-form-label s-12"><i class="icon-address-book mr-2"></i>City</label>
+                                        <label for="city" class="col-form-label s-12 encrypted d-none">' . encrypt_public('City') . '</label>
                                         <div class="form-control-wrap">
                                             <select class="form-select" name="city" id="city" data-search="on" required></select>
                                         </div>
                                     </div>
                                     <div class="form-group col-4 m-0">
-                                        <label for="phone1" class="col-form-label s-12"><i class="icon-phone mr-2"></i>Work</label>
+                                        <label for="phone1" class="col-form-label s-12 encrypted d-none">' . encrypt_public('Work') . '</label>
                                         <input name="phone1" placeholder="1234567890" class="form-control r-0 light s-12 " type="tel" required>
                                     </div>
                                     <div class="form-group col-4 m-0">
-                                        <label for="phone2" class="col-form-label s-12"><i class="icon-phone mr-2"></i>Home</label>
+                                        <label for="phone2" class="col-form-label s-12 encrypted d-none">' . encrypt_public('Home') . '</label>
                                         <input name="phone2" placeholder="1234567890" class="form-control r-0 light s-12 " type="tel">
                                     </div>
 
@@ -193,26 +193,26 @@ function phonebook_public_form($get_data) {
                             </div>
                             <hr>
                             <div class="card-body">
-                                <h5 class="card-title">Permission Selection</h5>
+                                <h5 class="card-title encrypted">' . encrypt_public('Permission Selection') . '</h5>
                                 <div class="form-row">';
                                     foreach(list_roles() as $key => $role) {
                                         echo '<div class="custom-control custom-checkbox mt-1 mb-3 pr-4">
                                         <input type="checkbox" class="custom-control-input" id="customControlValidation' . $key . '" name="roles[]" value="' . $role['secret'] . '">
-                                        <label class="custom-control-label" for="customControlValidation' . $key . '">' . $role['name'] . '</label>
+                                        <label class="custom-control-label encrypted" for="customControlValidation' . $key . '">' . encrypt_public($role['name']) . '</label>
                                     </div>';
                                     }
 echo '                                </div>
                                 <div class="form-row">
                                     <div class="custom-control custom-checkbox mb-3 pr-4">
                                         <input type="checkbox" class="custom-control-input" id="show_dashboard" name="show_dashboard" value="show_dashboard">
-                                        <label for="show_dashboard" class="custom-control-label">Show in Dashboard</label>
+                                        <label for="show_dashboard" class="custom-control-label encrypted">' . encrypt_public('Show in Dashboard') . '</label>
                                     </div>
                                 </div>
                             </div>
                             <hr>
 
                             <div class="card-body">
-                                <button id="submit" type="submit" class="btn btn-primary btn-lg">Save Data</button>
+                                <button id="submit" type="submit" class="btn btn-primary btn-lg encrypted d-none">' . encrypt_public('Add Phonebook') . '</button>
                             </div>
                         </div>
                     </form>
